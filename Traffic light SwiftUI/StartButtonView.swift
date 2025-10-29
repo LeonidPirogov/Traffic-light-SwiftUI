@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct StartButtonView: View {
+    let title: String
+    let action: () -> Void
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: action) {
+            Text(title)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+        }
+        .frame(width: 200, height: 60)
+        .background(.blue)
+        .clipShape(.rect(cornerRadius: 20))
+        .overlay(RoundedRectangle(cornerRadius: 20)
+                    .stroke(.white, lineWidth: 4)
+        )
     }
 }
 
 #Preview {
-    StartButtonView()
+    StartButtonView(title: "START", action: {})
 }
